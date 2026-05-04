@@ -1,0 +1,19 @@
+{
+	"node": "n8n-nodes-base.surveySparrowTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing & Content", "Communication"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://developers.surveysparrow.com/rest-apis/OAuth/"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://developers.surveysparrow.com/rest-apis"
+			}
+		]
+	},
+	"alias": ["survey", "response", "submission", "feedback"]
+}
