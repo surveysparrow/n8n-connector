@@ -1,0 +1,69 @@
+# Publishes n8n-nodes-surveysparrow to npm on every version tag push.
+#
+# From May 1 2026, n8n requires all community nodes to be published via
+# GitHub Actions with npm provenance statements. This workflow satisfies that
+# requirement.
+#
+# ─── ONE-TIME SETUP ────────────────────────────────────────────────────────────
+#
+# Option A — OIDC Trusted Publishing (recommended, no long-lived secrets):
+# 1. Log in to npmjs.com and open the n8n-nodes-surveysparrow package settings.
+# 2. Under "Publish access" → "Trusted Publishers", click "Add a publisher".
+# 3. Select GitHub Actions and fill in:
+#      Repository owner: surveysparrow
+#      Repository name:  n8n-connector
+#      Workflow name:    publish.yml
+#      Environment:      (leave blank)
+# 4. Leave NPM_TOKEN unset — GitHub's OIDC token is used instead.
+#
+# Option B — npm Automation Token (fallback):
+# 1. On npmjs.com: Access Tokens → Granular Access Token (Read + Write on this package).
+# 2. In GitHub: Settings → Secrets → Actions → New secret named NPM_TOKEN.
+#
+# ─── RELEASE PROCESS ───────────────────────────────────────────────────────────
+#
+# From the root of the n8n-connector repo, run:
+#   npm run release
+#
+# This bumps the version, commits, tags, and pushes — triggering this workflow.
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+defaults:
+  run:
+    working-directory: n8n
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+          cache-dependency-path: n8n/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to npm with provenance
+        run: |
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          npm run build && npm run lint
+          npm publish --provenance --access public
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

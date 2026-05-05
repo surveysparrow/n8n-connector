@@ -31,6 +31,24 @@ OAuth and scopes are described in the [SurveySparrow OAuth documentation](https:
 | **SurveySparrow** | Share surveys via Email / SMS / WhatsApp; create contacts |
 | **SurveySparrow Trigger** | Start a workflow when a new survey submission is received |
 
+## Example Workflows
+
+### 1 — Trigger a workflow on every new survey response
+1. Add a **SurveySparrow Trigger** node and select your survey.
+2. Activate the workflow — n8n registers a webhook automatically.
+3. Every completed submission fires the trigger and passes the answers as JSON to the next node.
+
+### 2 — Send a survey via Email when a HubSpot deal closes
+1. Use a **HubSpot Trigger** (deal stage changed) as the start node.
+2. Connect a **SurveySparrow** node, set **Action** to **Send Survey**, select **Channel Type → Email**, pick your survey and email channel, and map the contact's email address.
+3. The survey link is delivered automatically when a deal moves to "Closed Won".
+
+### 3 — Create a SurveySparrow contact from a Typeform submission
+1. Use a **Typeform Trigger** as the start node.
+2. Connect a **SurveySparrow** node, set **Action** to **Create Contact**.
+3. Map the respondent's email and name from the Typeform fields to the SurveySparrow contact fields.
+4. Optionally use **Additional Fields** to map any extra properties.
+
 ## Development (this monorepo)
 
 ```bash
