@@ -11,7 +11,7 @@
 # 2. Under "Publish access" → "Trusted Publishers", click "Add a publisher".
 # 3. Select GitHub Actions and fill in:
 #      Repository owner: surveysparrow
-#      Repository name:  n8n-connector
+#      Repository name:  n8n-connector-github
 #      Workflow name:    publish.yml
 #      Environment:      (leave blank)
 # 4. Leave NPM_TOKEN unset — GitHub's OIDC token is used instead.
@@ -34,10 +34,6 @@ on:
     tags:
       - '*.*.*'
 
-defaults:
-  run:
-    working-directory: n8n
-
 jobs:
   publish:
     name: Publish to npm
@@ -55,7 +51,7 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
-          cache-dependency-path: n8n/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
