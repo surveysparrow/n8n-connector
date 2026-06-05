@@ -19,7 +19,7 @@ export class SurveySparrow implements INodeType {
 		group: ['output'],
 		version: 1,
 		subtitle: '={{$parameter["resource"] === "channel" ? ("Send Survey via " + $parameter["channelType"]) : ($parameter["operation"] + ": " + $parameter["resource"])}}',
-		description: 'Interact with SurveySparrow — share surveys and manage contacts',
+		description: 'Create and share survey forms via Email, SMS, and WhatsApp; manage contacts',
 		defaults: {
 			name: 'SurveySparrow',
 		},

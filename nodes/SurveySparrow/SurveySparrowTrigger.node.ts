@@ -17,7 +17,7 @@ export class SurveySparrowTrigger implements INodeType {
 		icon: { light: 'file:surveysparrow.svg', dark: 'file:surveysparrow.dark.svg' },
 		group: ['trigger'],
 		version: 1,
-		description: 'Starts the workflow when a survey receives a new response',
+		description: 'Starts the workflow when a survey form receives a new response',
 		defaults: {
 			name: 'SurveySparrow Trigger',
 		},

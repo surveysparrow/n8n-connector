@@ -15,5 +15,5 @@
 			}
 		]
 	},
-	"alias": ["form", "survey", "questionnaire", "feedback", "contact"]
+	"alias": ["Survey", "Form", "Survey Form", "questionnaire", "feedback", "contact", "NPS", "CSAT"]
 }
