@@ -14,5 +14,6 @@
 				"url": "https://developers.surveysparrow.com/rest-apis"
 			}
 		]
-	}
+	},
+	"alias": ["form", "survey", "questionnaire", "feedback", "contact"]
 }

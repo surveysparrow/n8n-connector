@@ -15,5 +15,5 @@
 			}
 		]
 	},
-	"alias": ["survey", "response", "submission", "feedback"]
+	"alias": ["form", "survey", "response", "submission", "feedback", "questionnaire"]
 }
