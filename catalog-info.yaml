@@ -11,6 +11,7 @@ metadata:
   namespace: surveysparrow
   description: n8n-connector (SurveySparrow)
   annotations:
+    sparrow.io/hide: jenkins,observability,logs,api,dependencies,docs
     github.com/project-slug: surveysparrow/n8n-connector
     backstage.io/source-location: url:https://github.com/surveysparrow/n8n-connector/tree/master/
   tags:
