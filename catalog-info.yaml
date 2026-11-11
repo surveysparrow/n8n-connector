@@ -1,0 +1,29 @@
+# Launchpad Service Catalog entry for this repo — owned by this repo's team.
+#
+# Launchpad's SurveySparrow GitHub provider imports this file from repos tagged `launchpad-catalog`
+# (re-read every ~15 min). Change it with a normal PR here. Keep `metadata.name` / `namespace`
+# stable: links and the environment selector depend on them.
+# Format: https://backstage.io/docs/features/software-catalog/descriptor-format
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: n8n-connector
+  namespace: surveysparrow
+  description: n8n-connector (SurveySparrow)
+  annotations:
+    sparrow.io/hide: jenkins,observability,logs,api,dependencies,docs
+    github.com/project-slug: surveysparrow/n8n-connector
+    backstage.io/source-location: url:https://github.com/surveysparrow/n8n-connector/tree/master/
+  tags:
+  - service
+  - surveysparrow
+  - typescript
+  links:
+  - url: https://github.com/surveysparrow/n8n-connector
+    title: GitHub repository
+    icon: github
+    type: repo
+spec:
+  type: service
+  lifecycle: production
+  owner: group:surveysparrow/surveysparrow
